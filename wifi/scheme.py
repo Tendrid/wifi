@@ -20,7 +20,7 @@ def configuration(cell, passkey=None):
         }
     else:
         if cell.encryption_type.startswith('wpa'):
-            if len(passkey) != 64:
+            if passkey and len(passkey) != 64:
                 passkey = PBKDF2(passkey, cell.ssid, 4096).hexread(32)
 
             return {
